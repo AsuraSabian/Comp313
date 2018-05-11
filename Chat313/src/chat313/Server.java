@@ -22,6 +22,7 @@ public class Server {
             server = new ServerSocket(6789, 100);//Port, Queue(people on server)
             while (true) {
                 try {
+                      
                     waitForConnection();//allow chat when at least one person is in
                     setupStreams();//Set up connections between computers
                     whileChatting();//when connection is true allows chatting
@@ -94,9 +95,11 @@ public class Server {
         SwingUtilities.invokeLater(
                 new Runnable() {
             public void run() {
+                String temp = ServerPage.Display.getText();
+                ServerPage.Display.setText(temp+text);
                 //add text to display
                 //chatWindow.append(text);
-            }
+          }
         }
         );
     }
@@ -105,7 +108,7 @@ public class Server {
         SwingUtilities.invokeLater(
                 new Runnable() {
             public void run() {
-                //userText.setEditable(tof);
+               ServerPage.MessageField.setEditable(tof);
             }
         }
         );
